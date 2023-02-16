@@ -1,0 +1,17 @@
+{% macro mediatext(img, header, text) %}
+
+    <div class="media-text">
+        <div class="media">
+            {{ header }}
+        </div>
+        <div class="text">
+            <div class="h3">{{ header }}</div>
+            <p>{{ text }}</p>
+        </div>
+    </div>
+
+{% endmacro %}
+{#                    sizes="(max-width: 768px) 100vw,
+                           (max-width: 1000px) 50vw,
+                           660px"
+#}

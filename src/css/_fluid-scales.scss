@@ -1,0 +1,78 @@
+@use 'sass:math';
+
+//!@#%öÖäÄüÜß?=,;.:-_<>+*'€
+@function rem($pxValue) {
+  @return math.div($pxValue , 20) * 1rem;
+}
+
+
+$default-min-bp: 320px;
+$default-max-bp: 960px;
+
+@function round($number, $decimals: 0) {
+  $n: 1;
+  @if $decimals > 0 {
+    @for $i from 1 through $decimals {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+@function px-to-rem($px) {
+  $rems: math.div($px, 20px) * 1rem;
+  @return $rems;
+}
+
+@function fluid($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: round($slope * 100, 2);
+  $intercept-rem: round(px-to-rem($min-size - $slope * $min-breakpoint), 2);
+  $min-size-rem: round(px-to-rem($min-size), 2);
+  $max-size-rem: round(px-to-rem($max-size), 2);
+  @return clamp(#{$min-size-rem}, #{$slope-to-unit}#{$unit} + #{$intercept-rem}, #{$max-size-rem});
+}
+
+@function fluid-unitless($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
+  @debug "divider offset: #{$min-size}";
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: 100;
+  $intercept-rem: round(($min-size - $slope * $min-breakpoint), 2);
+  $min-size-rem: round(($min-size), 2);
+  $max-size-rem: round(($max-size), 2);
+  @return clamp(#{$min-size-rem}, #{$slope-to-unit}vw + #{$intercept-rem}, #{$max-size-rem});
+}
+
+:root {
+  --f: 1.2;
+
+  --spc-s: calc(var(--spc-md) / var(--f));
+  --spc: 1rem;
+  --spc-md: #{fluid(20px, 40px)};
+  --spc-lg: calc(var(--f) * var(--spc-md));
+  --spc-xlg: calc(var(--f) * var(--spc-lg));
+  --spc-xxlg: calc(var(--f) * var(--spc-xlg));
+
+  --fnt: 1rem;
+  --fnt-md: #{fluid(20px, 40px)};
+  --fnt-lg: calc(var(--f) * var(--fnt-md));
+  --fnt-xlg: calc(var(--f) * var(--fnt-lg));
+  --fnt-xxlg: calc(var(--f) * var(--fnt-xlg));
+
+  @for $i from 3 through 10 {
+    @media screen and (min-width: #{$i * 100}px) {
+      --f: calc(1.2 + 0.5 * (#{$i} - 3)/7);
+      //  goes up to 1.7
+    }
+  }
+}
+
+@each $spaceAbbr, $spaceProp in ('m': 'margin', 'p': 'padding') {
+  @each $directionAbbr, $directionProp in ('t': 'top', 'r': 'right', 'b': 'bottom', 'l': 'left') {
+    @each $spc in ('s', '', 'md', 'lg', 'xlg', 'xxlg') {
+      [class$='#{$spaceAbbr}#{$directionAbbr}-#{$spc}'] {
+        #{$spaceProp}-#{$directionProp}: var(--spc-#{$spc});
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "./template-parts/_head.njk" %}
+<body>
+  {% include "./template-parts/_header.njk" %}
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  {% include "./template-parts/_footer.njk" %}
+
+</body>
+</html>

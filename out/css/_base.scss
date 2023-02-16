@@ -1,0 +1,97 @@
+
+:root {
+  --bg40: linear-gradient(98.7deg, #EB477E 28.99%, #E87D7D 76.64%);
+  --shadow-grey: 5px 5px 0px rgba(0, 0, 0, 0.15);
+  --shadow-color: drop-shadow(10px 10px 0px rgba(253, 206, 222, 0.53));
+  --bg10: linear-gradient(88.54deg, rgba(240, 170, 130, 0.2) 21.74%, rgba(255, 149, 185, 0.2) 74.71%);
+
+  @media screen and (min-width: 700px) {
+    --desktop-flex: flex;
+    --desktop-block: block;
+    --desktop-flex-end: flex-end;
+    --desktop-row-reverse: row-reverse;
+    --desktop-row: row;
+    --desktop-space-between: space-between;
+  }
+  @media screen and (min-width: 1100px) {
+    //--desktop-flex: flex;
+    --wide-desktop-block: block;
+    --wide-desktop-flex: flex;
+  }
+}
+
+.show-on {
+  display: none;
+
+  &.wide-desktop {
+    @media screen and (min-width: 1100px) {
+      display: block;
+    }
+  }
+
+  &.desktop {
+    @media screen and (max-width: 1100px) and (min-width: 400px) {
+      display: block;
+    }
+  }
+
+  &.mobile {
+    @media screen and (max-width: 400px) {
+      display: block;
+    }
+  }
+
+}
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 1.25em
+}
+
+button::-moz-focus-inner {
+  border: 0
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="search"] {
+  -webkit-appearance: none
+}
+
+ul, ol {
+  list-style: none
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+}
+
+html, body {
+  height: 100%;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  color: #111;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  overflow-wrap: break-word;
+  //hyphens: auto;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
