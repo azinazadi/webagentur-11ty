@@ -4,21 +4,21 @@ const Image = require("@11ty/eleventy-img");
 
 
 module.exports = function(eleventyConfig) {
+    eleventyConfig.addFilter("cssmin", function(code) {
+        return new CleanCSS({}).minify(code).styles;
+    });
+
     eleventyConfig.addPassthroughCopy("./src/css/");
     eleventyConfig.addWatchTarget("./src/css/");
     eleventyConfig.addPlugin(eleventySass);
 
     eleventyConfig.addShortcode("image", imageShortcode);
 
-    eleventyConfig.addFilter("cssmin", function(code) {
-        return new CleanCSS({}).minify(code).styles;
-    });
 
     // Return your Object options:
     return {
         dir: {
             input: "src",
-            output: "out"
         }
     }
 };
@@ -27,7 +27,7 @@ function imageShortcode(src, cls, alt, sizes, widths) {
     let options = {
         widths: widths,
         formats: ['avif', 'webp'],
-        outputDir: "./out/images/optimized",
+        outputDir: "./_site/images/optimized",
         urlPath: "/images/optimized/",
     };
 
@@ -51,7 +51,7 @@ function imageShortcode(src, cls, alt, sizes, widths) {
 //     let metadata = await Image(src, {
 //         widths: [null],
 //         formats: ["webp", "jpeg"],
-//         outputDir: "./out/images/optimized",
+//         outputDir: "./_site/images/optimized",
 //         urlPath: "/images/optimized/",
 //     });
 //     console.log({metadata})
