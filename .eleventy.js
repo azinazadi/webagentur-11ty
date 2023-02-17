@@ -26,7 +26,9 @@ module.exports = function(eleventyConfig) {
 function imageShortcode(src, cls, alt, sizes, widths) {
     let options = {
         widths: widths,
-        formats: ['jpeg'],
+        formats: ['avif', 'webp'],
+        outputDir: "./out/images/optimized",
+        urlPath: "/images/optimized/",
     };
 
     // generate images, while this is async we don’t wait
@@ -43,3 +45,23 @@ function imageShortcode(src, cls, alt, sizes, widths) {
     let metadata = Image.statsSync(src, options);
     return Image.generateHTML(metadata, imageAttributes);
 }
+
+// async function imageShortcode(src, alt, sizes) {
+//     console.log(src)
+//     let metadata = await Image(src, {
+//         widths: [null],
+//         formats: ["webp", "jpeg"],
+//         outputDir: "./out/images/optimized",
+//         urlPath: "/images/optimized/",
+//     });
+//     console.log({metadata})
+//     let imageAttributes = {
+//         alt,
+//         sizes,
+//         loading: "lazy",
+//         decoding: "async",
+//     };
+//     console.log({imageAttributes})
+//     console.log({"html": Image.generateHTML(metadata, imageAttributes) })
+//     return Image.generateHTML(metadata, imageAttributes);
+// }

@@ -1,4 +1,4 @@
-<header class="c80 spring initial ">
+<header id="header"class="c80 spring initial ">
     <a aria-label="Home" class="reveal" style="--counter:1" href="/">
         <svg xmlns="http://www.w3.org/2000/svg" width="403" height="42" fill="none" viewBox="0 0 403 42">
             <path fill="#000"
@@ -14,3 +14,10 @@
         </ul>
     </nav>
 </header>
+
+<script>
+    window.addEventListener('scroll', () => {
+        document.getElementById("header").classList.remove("initial");
+        document.getElementById("header").classList.toggle("scrolled", window.scrollY > 20)
+    });
+</script>
