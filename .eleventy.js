@@ -12,6 +12,7 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addPassthroughCopy("./src/css/");
+    eleventyConfig.addPassthroughCopy("./src/public/");
 
     eleventyConfig.addShortcode("image", imageShortcode);
 
