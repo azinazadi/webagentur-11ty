@@ -18,7 +18,6 @@ module.exports = function(eleventyConfig) {
     return {
         dir: {
             input: "src",
-            output: "out"
         }
     }
 };
@@ -27,7 +26,7 @@ function imageShortcode(src, cls, alt, sizes, widths) {
     let options = {
         widths: widths,
         formats: ['avif', 'webp'],
-        outputDir: "./out/images/optimized",
+        outputDir: "./_site/images/optimized",
         urlPath: "/images/optimized/",
     };
 
@@ -51,7 +50,7 @@ function imageShortcode(src, cls, alt, sizes, widths) {
 //     let metadata = await Image(src, {
 //         widths: [null],
 //         formats: ["webp", "jpeg"],
-//         outputDir: "./out/images/optimized",
+//         outputDir: "./_site/images/optimized",
 //         urlPath: "/images/optimized/",
 //     });
 //     console.log({metadata})
