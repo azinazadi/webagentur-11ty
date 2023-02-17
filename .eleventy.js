@@ -4,13 +4,14 @@ const Image = require("@11ty/eleventy-img");
 
 
 module.exports = function(eleventyConfig) {
+    eleventyConfig.addPlugin(eleventySass);
+    eleventyConfig.addWatchTarget("./src/css/");
+
     eleventyConfig.addFilter("cssmin", function(code) {
         return new CleanCSS({}).minify(code).styles;
     });
 
     eleventyConfig.addPassthroughCopy("./src/css/");
-    eleventyConfig.addWatchTarget("./src/css/");
-    eleventyConfig.addPlugin(eleventySass);
 
     eleventyConfig.addShortcode("image", imageShortcode);
 
