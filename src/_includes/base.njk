@@ -2,14 +2,21 @@
 <html lang="en">
 {% include "./template-parts/_head.njk" %}
 <body>
-  {% include "./template-parts/_header.njk" %}
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TG4TXGQ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-  <main>
+{% include "./template-parts/_header.njk" %}
+
+<main>
     {% block content %}
     {% endblock %}
-  </main>
+</main>
 
-  {% include "./template-parts/_footer.njk" %}
+{% include "./template-parts/_footer.njk" %}
 
 </body>
 </html>

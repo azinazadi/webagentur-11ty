@@ -17,6 +17,7 @@
     //--desktop-flex: flex;
     --wide-desktop-block: block;
     --wide-desktop-flex: flex;
+    --wide-desktop-space-between: space-between;
   }
 }
 
@@ -92,6 +93,3 @@ p, h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
   //hyphens: auto;
 }
 
-#root, #__next {
-  isolation: isolate;
-}

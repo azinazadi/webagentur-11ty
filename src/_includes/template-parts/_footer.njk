@@ -10,3 +10,21 @@
 
     </div>
 </footer>
+
+<script>
+    let calc = function(){
+        let kontaktBtn= document.getElementById("kontakt-btn").getBoundingClientRect();
+        let headerHeight = document.getElementById("header").offsetHeight;
+
+        const r = document.querySelector(':root');
+
+        r.style.setProperty('--header-height', headerHeight + "px");
+        r.style.setProperty('--kontakt-btn-top', kontaktBtn.top + "px");
+        r.style.setProperty('--kontakt-btn-left', kontaktBtn.left + "px");
+    }
+    window.addEventListener("resize", calc);
+    calc();
+</script>
+<style>
+
+</style>

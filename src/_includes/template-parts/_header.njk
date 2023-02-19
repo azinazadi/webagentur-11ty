@@ -10,7 +10,7 @@
             <li><a href="#projekte" class="btn reveal" style="--counter:1">Projekte</a></li>
             <li><a href="#leistungen" class="btn reveal" style="--counter:1.7">Leistungen</a></li>
             <li><a href="#überuns" class="btn reveal" style="--counter:2.3">Über uns</a></li>
-            <li><a href="#kontakt" class="btn primary kontakt reveal" style="--counter:1">Kontakt</a></li>
+            <li><a id="kontakt-btn" href="#kontakt" class="btn primary kontakt reveal" style="--counter:1">Kontakt</a></li>
         </ul>
     </nav>
 </header>
@@ -19,5 +19,6 @@
     window.addEventListener('scroll', () => {
         document.getElementById("header").classList.remove("initial");
         document.getElementById("header").classList.toggle("scrolled", window.scrollY > 20)
+        document.getElementById("kontakt-btn").classList.toggle("fixed", window.scrollY > 500)
     });
 </script>

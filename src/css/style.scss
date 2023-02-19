@@ -97,9 +97,9 @@ h2, .h2 {
 
 h3, .h3 {
   font-weight: 600;
-  font-size: var(--fnt-md);
+  font-size: var(--fnt-sm);
   letter-spacing: -0.01em;
-  text-transform: uppercase;
+  //text-transform: uppercase;
   line-height: 1.3;
   margin-bottom: 0;
 }
@@ -116,9 +116,16 @@ p {
     line-height: 1.3;
     letter-spacing: -0.015em;
   }
+  &.mid {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -0.015em;
+  }
 }
 
-.c40, .c80 {
+.c40, .c80, .c60 {
   padding-inline: var(--spc-md);
 }
 
@@ -129,6 +136,11 @@ p {
 
 .c80 {
   max-width: rem(1700);
+  margin-inline: auto;
+}
+
+.c60 {
+  max-width: rem(1400);
   margin-inline: auto;
 }
 
@@ -153,9 +165,7 @@ footer {
 .gapped-sections {
   display: flex;
   flex-direction: column;
-  gap: var(--spc-xxlg);
-  padding-top: var(--spc-xxlg);
-  padding-bottom: var(--spc-xxlg);
+  gap: var(--gsgap, var(--spc-xxlg));
 }
 
 .media-text {
@@ -255,11 +265,14 @@ header.scrolled {
 }
 
 .kontakt.btn{
-  position: fixed;
-  z-index: 1000;
-  header:not(.initial) & {
+  &.fixed {
+    top: 0;
+    left: var(--kontakt-btn-left, 1rem);
+    position: fixed;
     --reveal-animation: shadow;
     --reveal-animation-direction: normal;
+    z-index: 1000;
+
   }
 }
 
@@ -298,3 +311,22 @@ header.scrolled {
   }
 }
 
+
+.grid {
+  display: flex;
+  gap: var(--spc-lg);
+  > * {
+    flex: 1 1 0;
+  }
+
+  &.one-third {
+    > *:first-child {
+      flex: 0.5 0.5 0;
+    }
+  }
+}
+
+.hero {
+  margin-top: clamp(3rem, calc(50vh - 238px - 127px) , 30rem);
+  margin-bottom: clamp(3rem, calc(50vh - 238px), 30rem);
+}

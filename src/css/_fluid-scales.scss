@@ -55,6 +55,7 @@ $default-max-bp: 960px;
 
   --fnt: 1rem;
   --fnt-md: #{fluid(20px, 40px)};
+  --fnt-sm: calc(var(--fnt-md) / var(--f));
   --fnt-lg: calc(var(--f) * var(--fnt-md));
   --fnt-xlg: calc(var(--f) * var(--fnt-lg));
   --fnt-xxlg: calc(var(--f) * var(--fnt-xlg));
@@ -69,8 +70,8 @@ $default-max-bp: 960px;
 
 @each $spaceAbbr, $spaceProp in ('m': 'margin', 'p': 'padding') {
   @each $directionAbbr, $directionProp in ('t': 'top', 'r': 'right', 'b': 'bottom', 'l': 'left') {
-    @each $spc in ('s', '', 'md', 'lg', 'xlg', 'xxlg') {
-      [class$='#{$spaceAbbr}#{$directionAbbr}-#{$spc}'] {
+    @each $spc in ('s', 'md', 'lg', 'xlg', 'xxlg') {
+      [class*='#{$spaceAbbr}#{$directionAbbr}-#{$spc}'] {
         #{$spaceProp}-#{$directionProp}: var(--spc-#{$spc});
       }
     }
