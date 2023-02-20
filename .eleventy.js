@@ -40,7 +40,7 @@ function imageShortcode(src, cls, alt, sizes, widths) {
         class: cls,
         alt,
         sizes,
-        loading: "lazy",
+        // loading: "lazy",
         decoding: "async",
     };
     // get metadata even if the images are not fully generated yet
