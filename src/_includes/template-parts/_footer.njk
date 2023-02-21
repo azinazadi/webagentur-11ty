@@ -31,8 +31,8 @@
 
     const autoLoadDuration = 3; //In Seconds
     setTimeout(() => {
-        let a = o.getElementsByTagName('head')[0];
-        let r = o.createElement('script');
+        let a = document.getElementsByTagName('head')[0];
+        let r = document.createElement('script');
         r.async = 1;
         r.src = "https://www.googletagmanager.com/gtag/js?id=G-Q8SYT0VNN2";
         a.appendChild(r);
