@@ -144,6 +144,7 @@ p {
   margin-inline: auto;
 }
 
+
 footer {
   flex-direction: var(--desktop-row, column);
   justify-content: var(--desktop-space-between, center) !important;
@@ -151,8 +152,9 @@ footer {
   background-color: #f0f0f0;
   padding-top: var(--spc-lg);
   padding-bottom: var(--spc);
-  margin-top: var(--spc-xxlg);
-
+  body.index & {
+    margin-top: var(--spc-xxlg);
+  }
   p {
     margin: 0;
   }
@@ -329,4 +331,75 @@ header.scrolled {
 .hero {
   margin-top: clamp(3rem, calc(50vh - 238px - 127px) , 30rem);
   margin-bottom: clamp(3rem, calc(50vh - 238px), 30rem);
+}
+
+
+
+
+
+
+.text {
+
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+.blog {
+  h1 {
+    font-size: var(--fnt-xlg);
+  }
+
+  h2 {
+    font-size: var(--fnt-md);
+    margin-top: var(--spc-lg);
+    margin-bottom: var(--spc-s);
+  }
+  h3 {
+    font-size: var(--fnt);
+    margin-top: var(--spc-md);
+
+  }
+
+  .text p {
+    font-family: "Times New Roman", sans, serif;
+  }
+  a.contact{
+    font-family: is, fallback, -apple-system,Arial,BlinkMacSystemFont,roboto slab,droid serif,segoe ui,Ubuntu,Cantarell,Georgia,serif;;
+    background-color: white;
+    color: #111;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+    transition: transform .2s;
+    display: inline-block;
+    &:hover {
+      transform: scale(1.2);
+    }
+
+  }
+}
+.blog-header {
+  h1 {
+    font-weight: 600;
+  }
+}
+
+.blog-footer {
+  background: var(--bg40);
+}
+
+.tc-white {
+  color: white;
+}
+
+.center {
+  text-align: center;
+}
+
+body.blog #header nav {
+  display: none;
 }

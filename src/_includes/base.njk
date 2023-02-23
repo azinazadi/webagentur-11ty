@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include "./template-parts/_head.njk" %}
-<body>
+<body class="{{ body_class }}">
 
 {% include "./template-parts/_header.njk" %}
 
 <main>
     {% block content %}
+        {{ content | safe }}
     {% endblock %}
 </main>
 

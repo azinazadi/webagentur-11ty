@@ -1,0 +1,27 @@
+{% set body_class = "blog" %}
+
+{% extends "base.njk" %}
+
+{% block content %}
+    <div class="c40 blog-header pt-xlg pb-xlg blog">
+        <h1>{{ title | safe }}</h1>
+    </div>
+    <div class="c40 blog text pb-xlg">
+        {{ content | safe }}
+    </div>
+    <div class="blog-footer text tc-white">
+
+        <div class="c40 pt-xlg pb-xlg">
+            <h2>Vertrauen Sie uns </h2>
+            <p>
+                {{ footer | safe }}
+            </p>
+            <p class="center pt-lg">
+                <a href="mailto:kontakt@webagentur.berlin" class="btn h3 contact"> kontakt@webagentur.berlin</a>
+            </p>
+
+        </div>
+    </div>
+
+{% endblock %}
+
